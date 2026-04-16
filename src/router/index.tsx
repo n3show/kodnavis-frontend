@@ -5,6 +5,7 @@ import HomePage from '../pages/HomePage'
 import CoursePage from '../pages/CoursePage'
 import ProtectedRoute from '../components/ProtectedRoute'
 import DashboardPage from '../pages/DashboardPage'
+import AdminPage from '../pages/AdminPage'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute roles={['teacher', 'admin']}>
         <DashboardPage />
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: '/admin',
+    element: (
+      <ProtectedRoute roles={['admin']}>
+        <AdminPage />
       </ProtectedRoute>
     )
   }
