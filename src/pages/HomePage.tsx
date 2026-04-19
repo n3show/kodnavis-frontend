@@ -27,13 +27,13 @@ export default function HomePage() {
     }, [])
 
     return (
-       <div className="flex flex-col gap-4 p-8">
+       <div className='max-w-4xl mx-auto px-8 py-10'>
             {error && <p className="text-red-500">{error}</p>}
             {loading && <p>Loading...</p>}
             {courses.map((course) => (
-            <div className='cursor-pointer' key={course.ID} onClick={() => navigate(`/courses/${course.ID}`)}>
-                <h2>{course.Title}</h2>
-                <p>{course.Description}</p>
+            <div className="cursor-pointer border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-white" key={course.ID} onClick={() => navigate(`/courses/${course.ID}`)}>
+                <h2 className='text-lg font-semibold text-gray-900 mb-2'>{course.Title}</h2>
+                <p className='text-gray-500 text-sm'>{course.Description}</p>
             </div>
             ))}
         </div>
