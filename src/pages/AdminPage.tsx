@@ -31,10 +31,11 @@ export default function AdminPage() {
     }
 
     return (
-        <div>
+        <div className="max-w-5xl mx-auto px-8 py-10">
+            <h1 className="text-2xl font-bold text-gray-900 mb-8">Admin page</h1>
             {error && <p className="text-red-500">{error}</p>}
             {loading && <p>Loading...</p>}
-            <table className="table-fixed text-sm text-left border-collapse">
+            <table className="w-full bg-white border border-gray-200 rounded-xl overflow-hidden">
                 <thead className="bg-gray-50 uppercase font-medium text-gray-700">
                     <tr>
                         <th className="px-6 py-3 border-b">Username</th>
@@ -53,13 +54,14 @@ export default function AdminPage() {
                             <select 
                                 value={selectedRoles[user.ID] ?? user.Role}
                                 onChange={(e) => setSelectedRoles({...selectedRoles, [user.ID]: e.target.value})}
+                                className="border border-gray-300 rounded-lg p-2 text-sm mr-2"
                             >
                                 <option value="student">Student</option>
                                 <option value="teacher">Teacher</option>
                                 <option value="moderator">Moderator</option>
                                 <option value="admin">Admin</option>
                             </select>
-                            <button className="cursor-pointer bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onClick={() => handleRoleChange(user.ID)}>Apply</button>
+                            <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors" onClick={() => handleRoleChange(user.ID)}>Apply</button>
                         </td>
                     </tr>
                     ))}
