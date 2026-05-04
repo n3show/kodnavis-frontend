@@ -31,7 +31,7 @@ export default function HomePage() {
             {error && <p className="text-red-500">{error}</p>}
             {loading && <p>Loading...</p>}
             {courses.map((course) => (
-            <div className="cursor-pointer border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-white" key={course.ID} onClick={() => navigate(`/courses/${course.ID}`)}>
+            <div className='cursor-pointer border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-white mb-4' key={course.ID} onClick={() => navigate(`/courses/${course.ID}`)}>
                 <h2 className='text-lg font-semibold text-gray-900 mb-2'>{course.Title}</h2>
                 <p className='text-gray-500 text-sm'>{course.Description}</p>
             </div>

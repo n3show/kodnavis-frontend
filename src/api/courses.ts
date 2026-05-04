@@ -25,7 +25,11 @@ export async function createCourse(title: string, description: string) {
 }
 
 export async function updateCourse(id: string, title: string, description: string, isPublished: boolean) {
-    const response = await api.put(`/courses/${id}`, {title, description, isPublished})
+    const response = await api.put(`/courses/${id}`, {
+        title, 
+        description, 
+        is_published: isPublished
+    })
 
     return response.data
 }

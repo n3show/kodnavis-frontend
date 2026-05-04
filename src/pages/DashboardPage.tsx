@@ -78,10 +78,16 @@ export default function DashboardPage() {
             {loading && <p>Loading...</p>}
             
             {courses.map((course) => (
-            <div className='cursor-pointer border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-white mb-4' key={course.ID} onClick={() => navigate(`/courses/${course.ID}`)}>
-                <h2>{course.Title}</h2>
-                <p>{course.Description}</p>
-            </div>
+                <div className='cursor-pointer border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-white mb-4' key={course.ID} onClick={() => navigate(`/courses/${course.ID}`)}>
+                    <div className="flex items-center justify-between mb-1">
+                        <h2 className="text-lg font-semibold text-gray-900">{course.Title}</h2>
+                        {course.IsPublished 
+                            ? <span className="text-xs font-medium bg-green-100 text-green-700 px-3 py-1 rounded-full">Published</span>
+                            : <span className="text-xs font-medium bg-gray-100 text-gray-500 px-3 py-1 rounded-full">Draft</span>
+                        }
+                    </div>
+                    <p className="text-gray-500 text-sm">{course.Description}</p>
+                </div>
             ))}
         </div>
     )

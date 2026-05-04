@@ -7,6 +7,7 @@ interface AuthState {
   setAuth: (token: string, user: User) => void
   logout: () => void
   getRole: () => string | null
+  getUserID: () => string | null
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -27,7 +28,21 @@ export const useAuthStore = create<AuthState>((set) => ({
     
     try {
       const payload = JSON.parse(atob(token.split('.')[1]))
+      
       return payload.role as string
+    } catch {
+      return null
+    }
+  },
+  getUserID: () => {
+    const token = localStorage.getItem('token')
+
+    if (!token) return null
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]))
+      
+      return payload.user_id as string
     } catch {
       return null
     }
